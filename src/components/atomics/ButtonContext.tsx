@@ -4,9 +4,9 @@ import {ButtonVariant} from "@/lib/ButtonContext.types"
 
 
 
-export default function ButtonContext ({link, variant, text}:{link:string, variant:ButtonVariant, text:string}){
+export default function ButtonContext ({link, variant, text, size}:{link:string, variant:ButtonVariant, text:string, size?:string}){
     return(
-        <Button variant={ variant} asChild>
+        <Button className={size} variant={ variant} asChild>
             <Link href={`/${link}`}>{text}</Link>
         </Button>
     )
