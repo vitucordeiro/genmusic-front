@@ -1,4 +1,4 @@
-import ButtonContext from "../atomics/ButtonContext"
+import ButtonContext from "../../atomics/ButtonContext"
 
 export default function Nav() {
     return(
