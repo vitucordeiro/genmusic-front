@@ -2,7 +2,7 @@ import ButtonContext from "../../atomics/ButtonContext";
 
 export default function Main(){
     return(
-        <div className="border border-cyan-200  space-y-1 md:space-y-5 lg:space-y-10 flex flex-col justify-between w-2/3">
+        <div className="space-y-1 md:space-y-5 lg:space-y-10 flex flex-col justify-between w-2/3">
                 <h1 className="text-2xl md:text-6xl lg:text-8xl font-extrabold ">Create playlist based on your emotions with IA </h1>
                 <span className="text-lg">Your emotions deserve a soundtrack. Create and listen on your
                 Spotify.</span>
