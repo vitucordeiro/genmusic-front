@@ -1,22 +1,22 @@
 
 import {
-    ClerkProvider,
+    SignOutButton,
     SignInButton,
     SignedIn,
     SignedOut,
-    UserButton
+    SignUp,
+    SignIn,
+    UserButton,
+    
   } from '@clerk/nextjs'
-
 export default function Sign(){
     return(
         <div>
-            <SignedOut>       
-                <SignInButton/>        
-            </SignedOut> 
 
-            <SignedIn>          
-                <UserButton />        
-            </SignedIn>
+            <SignedOut>
+                <UserButton>user button</UserButton>
+                <SignIn/>
+            </SignedOut>
         </div>
     )
 }

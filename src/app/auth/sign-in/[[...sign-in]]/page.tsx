@@ -4,10 +4,12 @@ import Footer from "@/components/screen/home/Footer";
 
 export default function SignIn(){
     return(
+        <>
         <div className="flex flex-col items-center justify-between w-screen h-screen">
             <Nav/>
-            <Sign/>
+            <Sign></Sign>
             <Footer/>
         </div>
+        </>
     )
 }
