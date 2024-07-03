@@ -1,7 +1,7 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { createRouteMatcher } from "@clerk/nextjs/server";
-
-const isProtectedRoute = createRouteMatcher([
+import { NextResponse } from 'next/server';
+const isPrivateRoute = createRouteMatcher([
   '/dashboard(.*)',
   '/forum(.*)',
 ]);
@@ -12,18 +12,18 @@ const isPublicRoute = createRouteMatcher([
 
 ])
 export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)){
-    const token = auth().userId
-    if(!token){ return auth().redirectToSignIn()}
-    return console.log(token)
-
-  } 
-if(isPublicRoute(req)){
-  return console.log("opa")
-  
-}
-  
-
+  if(isPrivateRoute(req)){
+    if(!auth().sessionId && !auth().sessionId){
+      console.log("is not auth")
+      return auth().redirectToSignIn()
+    }
+    console.log("private router") 
+    return NextResponse.redirect('/')
+  }
+  if(isPublicRoute(req)){
+    console.log("public router")
+    return NextResponse.next();
+  }
 });
 
 export const config = {
