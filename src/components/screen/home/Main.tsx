@@ -6,7 +6,7 @@ export default function Main(){
                 <h1 className="text-2xl md:text-6xl lg:text-8xl font-extrabold ">Create playlist based on your emotions with IA </h1>
                 <span className="text-lg">Your emotions deserve a soundtrack. Create and listen on your
                 Spotify.</span>
-                <ButtonContext link="auth/signin" text="Create playlist" variant={"default"} size="md:w-1/4 md:min-w-1/4 h-12 w-full"></ButtonContext>
+                <ButtonContext link="auth/sign-in" text="Create playlist" variant={"default"} size="md:w-1/4 md:min-w-1/4 h-12 w-full"></ButtonContext>
         </div>
     )
 }
