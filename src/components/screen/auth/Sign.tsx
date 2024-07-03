@@ -12,9 +12,8 @@ import {
 export default function Sign(){
     return(
         <div>
-
             <SignedOut>
-                <UserButton>user button</UserButton>
+                <UserButton/>
                 <SignIn/>
             </SignedOut>
         </div>
