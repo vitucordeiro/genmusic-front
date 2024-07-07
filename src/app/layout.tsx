@@ -24,15 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
       <ClerkProvider>
+      <html lang="en">
 
         <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
           <main>
             {children}
           </main>
           </body>
-      </ClerkProvider>
       </html>
+      </ClerkProvider>
   );
 }
