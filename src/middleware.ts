@@ -6,7 +6,7 @@ export default clerkMiddleware((auth, req: NextRequest) => {
   const {sessionClaims, sessionId, userId} = auth()
   if(!isPublicRoute){
     if(!userId && !sessionId){
-      
+      auth().protect()
     }
     auth().protect()
   }
