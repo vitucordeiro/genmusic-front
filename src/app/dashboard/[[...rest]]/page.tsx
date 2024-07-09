@@ -18,7 +18,7 @@ export default function Home() {
 
         </Protect>
         </SignedIn>
-        <SignedOut>
+        <SignedOut >
             <Link href="/sign-in">sign-in</Link>
         </SignedOut>
     </div>
