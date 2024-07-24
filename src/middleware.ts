@@ -1,18 +1,31 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
-const isPublicRoute = createRouteMatcher(["/", "/sign-in", "/sign-up"])
+import { useAuth } from "@clerk/nextjs" 
+import { redirect } from 'next/navigation'
 
-export default clerkMiddleware((auth, req: NextRequest) => {
-  const {sessionClaims, sessionId, userId} = auth()
-  if(!isPublicRoute){
-    if(!userId && !sessionId){
-      
-    }
-    auth().protect()
+import { use } from "react";
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"])
+const isFormSubmission = createRouteMatcher(["/api/form-submission(.*)"])
+
+
+
+
+export default clerkMiddleware(async (auth, req: NextRequest) => {
+  const provider = "oauth_spotify";
+  const { sessionId, userId } = auth()
+  
+  const clerkResponse = await clerkClient.users.getUserOauthAccessToken(
+    userId || '',
+    provider
+  )
+
+  const accessToken = clerkResponse.data[0]?.token
+  console.log(accessToken);
+  if(!userId && !sessionId && isProtectedRoute(req)){
+    return auth().redirectToSignIn();
   }
-  return NextResponse.next();
-
-   
+ 
+  return NextResponse.next()
 });
 
 export const config = {
