@@ -1,33 +1,29 @@
 import { clerkMiddleware, createRouteMatcher, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@clerk/nextjs" 
-import { redirect } from 'next/navigation'
-
-import { use } from "react";
+import { getAccessTokenSpotify } from "@/hooks/useSpotifyToken"
 const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"])
-const isFormSubmission = createRouteMatcher(["/api/form-submission(.*)"])
 
+const isPublicRoute = createRouteMatcher(["/sign-in(.*), /sign-up(.*), /(.*), "])
 
+export default clerkMiddleware((auth, req) => {
+  // Temporarily disable authentication logic
+  const {sessionClaims, sessionId, userId} = auth()
+  if(!isPublicRoute){
+     auth().protect()
+   }
+  return NextResponse.next();});
 
-
-export default clerkMiddleware(async (auth, req: NextRequest) => {
-  const provider = "oauth_spotify";
-  const { sessionId, userId } = auth()
-  
-  const clerkResponse = await clerkClient.users.getUserOauthAccessToken(
-    userId || '',
-    provider
-  )
-
-  const accessToken = clerkResponse.data[0]?.token
-  console.log(accessToken);
-  if(!userId && !sessionId && isProtectedRoute(req)){
-    return auth().redirectToSignIn();
-  }
- 
-  return NextResponse.next()
-});
 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };
+
+
+
+
