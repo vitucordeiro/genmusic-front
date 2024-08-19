@@ -12,6 +12,7 @@
     "@clerk/clerk-react": "^5.3.3",
     "@clerk/nextjs": "^5.2.13",
     "@hookform/resolvers": "^3.9.0",
+    "@prisma/client": "5.18.0",
     "@radix-ui/react-slot": "^1.1.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
