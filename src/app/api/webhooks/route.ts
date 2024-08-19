@@ -1,7 +1,8 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import { STATUS_CODES } from 'http'
+import { createUser, getUserById } from '@/lib/user'
+import { User } from '@prisma/client'
 export async function GET(req: Request) {
   return new Response('', { status: 200 })
 }
@@ -51,20 +52,34 @@ export async function POST(req: Request) {
     })
   }
 
-  // Do something with the payload
+  // Do something with the payload 
   // For this guide, you simply log the payload to the console
   const { id } = evt.data;
   const eventType = evt.type;
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-  console.log('Webhook body:', body)
+
   
   if (evt.type === 'user.created') {
     const {id, email_addresses, first_name, last_name} = evt.data;
 
-    if(!id && !email_addresses){
-      return new Response('Error ocurred -- Missing data.', { status:400})
+      if(!id || !email_addresses){
+        return new Response('Error ocurred -- Missing data.', { status:400})
+      }
+
+      const userData: Omit<User, 'id' | 'createdAt' | 'updateAt'> = {
+        clerkUserId: id,
+        email: email_addresses[0].email_address,
+        first_name: first_name || '',
+        last_name: last_name || '',
+      }
+      try{
+        await createUser(userData as User)
+        return new Response("User Created", { status : 201});
+      }catch(error){
+        return new Response(`Error ocurred -- ${error} `, { status : 400 } )
+      }
+      
     }
+
     console.log('userId:', evt.data.id)
-  }
-  return new Response('', { status: 200 })
+
 }
