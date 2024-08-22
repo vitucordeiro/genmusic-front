@@ -39,16 +39,6 @@ Genmusic is an open-source project under development that aims to generate perso
   * [Other environment variables required by your application and Clerk.]
 2. Configure your Clerk application and webhooks as described in the "Webhooks" section below.
 
-### Running the development server
-  ```bash
-    npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
-    # or
-    bun dev
-  ```
 ### Webhooks
 
 This application uses Clerk webhooks to sync new users to MongoDB. To configure them:
@@ -81,4 +71,14 @@ This project uses Prisma as the ORM for database interactions.
   3. Generate the Prisma Client:
   ```bash
   npx prisma generate
+  ```
+### Running the development server
+  ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
   ```
