@@ -2,11 +2,13 @@
 
 ## Description
 
-[Provide a brief, engaging description of your project. What does it do? What problem does it solve? Who is it for?]
+GenMusicis an open-source project under development that aims to generate personalized Spotify playlists based on user-described emotions.
 
 ## Features
 
-* [List the main features of your application.]
+* AI Playlist Generation: Leverages artificial intelligence to create Spotify playlists tailored to user input.
+* Emotion-Based Music Discovery: Users can describe their desired mood or emotion, and the application will generate a playlist to match.
+* Spotify Integration: Seamlessly connects with user Spotify accounts to create and populate playlists.
 
 ## Getting Started
 
