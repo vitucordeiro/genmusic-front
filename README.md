@@ -2,7 +2,7 @@
 
 ## Description
 
-GenMusicis an open-source project under development that aims to generate personalized Spotify playlists based on user-described emotions.
+Genmusic is an open-source project under development that aims to generate personalized Spotify playlists based on user-described emotions.
 
 ## Features
 
