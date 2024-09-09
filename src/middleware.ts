@@ -1,7 +1,6 @@
-import { clerkMiddleware, createRouteMatcher, clerkClient } from "@clerk/nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@clerk/nextjs" 
-import { getAccessTokenSpotify } from "@/hooks/useSpotifyToken"
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import {  NextResponse } from "next/server";
+
 const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"])
 
 const isPublicRoute = createRouteMatcher(["/sign-in(.*), /sign-up(.*), /(.*), "])
