@@ -1,5 +1,4 @@
 "use server"
-import { useAuth } from '@clerk/nextjs';
 import { clerkClient, auth } from '@clerk/nextjs/server';
 
 export async function getAccessTokenSpotify(){
