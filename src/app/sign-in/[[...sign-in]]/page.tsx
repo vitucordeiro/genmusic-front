@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center justify-between w-screen h-screen  ">
       <Nav/>
-      <SignIn fallbackRedirectUrl={'/dashboard'}/>
+      <SignIn afterSignOutUrl={'/dashboard'}></SignIn>
       <Footer/>
     </div>
   );
