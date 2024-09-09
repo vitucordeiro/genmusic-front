@@ -6,7 +6,6 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center justify-between w-screen h-screen  ">
     <Nav/>
-    <SignUp fallbackRedirectUrl={'/dashboard'}/>
     <Footer/>
   </div>
   );
