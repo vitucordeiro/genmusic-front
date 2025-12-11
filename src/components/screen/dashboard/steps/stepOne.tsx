@@ -3,6 +3,7 @@ import { getAccessTokenSpotify } from '@/hooks/useSpotifyToken';
 import React, {  useEffect, useState } from 'react';
 import axios from 'axios';
 import Loadscreen from '../../load/Loadscreen';
+import { API_BASE_URL } from '@/lib/api.config';
 
 export function StepOne({ onSubmit, setStep }: { onSubmit: (data: any) => void, setStep: (data:any) => void }) {
   const [mood, setMood] = useState('');
@@ -28,7 +29,7 @@ export function StepOne({ onSubmit, setStep }: { onSubmit: (data: any) => void, 
     const dataMood = JSON.stringify(mood)
     setIsLoading(true);
     try {
-      const response = await axios('http://localhost:3000/app/create', { 
+      const response = await axios(`${API_BASE_URL}/app/create`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

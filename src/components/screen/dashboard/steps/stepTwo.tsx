@@ -5,6 +5,7 @@ import React from 'react';
 import {useEffect,useState} from 'react'
 import axios from 'axios';
 import Loadscreen from '../../load/Loadscreen';
+import { API_BASE_URL } from '@/lib/api.config';
 
 export function StepTwo({ playlist, setStep,  }: { playlist: ResponseCreate[], setStep: (data:any) => void }) {
     const [isLoading, setIsLoading ] = useState(false);
@@ -28,7 +29,7 @@ export function StepTwo({ playlist, setStep,  }: { playlist: ResponseCreate[], s
       setIsLoading(true);
       try {
         const uris = playlist.map(item => item.uri);
-        const response = await axios('http://localhost:3000/app/generate', { 
+        const response = await axios(`${API_BASE_URL}/app/generate`, { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
