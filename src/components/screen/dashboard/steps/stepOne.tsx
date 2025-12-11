@@ -58,7 +58,7 @@ export function StepOne({ onSubmit, setStep }: { onSubmit: (data: any) => void, 
       {isLoading ? ( <Loadscreen/> ) : ( 
             <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center h-full w-screen space-y-6 px-4 sm:px-8 md:px-16 lg:px-24">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 leading-tight">
-              What's your vibe?
+              What&apos;s your vibe?
             </h2>
             <p className="text-gray-600 text-lg sm:text-xl max-w-prose text-center">
               Playlist name 
@@ -73,7 +73,7 @@ export function StepOne({ onSubmit, setStep }: { onSubmit: (data: any) => void, 
               
             />  
             <p className="text-gray-600 text-lg sm:text-xl max-w-prose text-center">
-              Tell us about your mood, and we'll craft a playlist that hits the spot.
+              Tell us about your mood, and we&apos;ll craft a playlist that hits the spot.
             </p>
             <textarea
               className="w-screen  md:w-2/3 lg:w-1/2 h-20 p-6 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none shadow-inner"
