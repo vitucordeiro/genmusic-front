@@ -6,6 +6,7 @@ import {useEffect,useState} from 'react'
 import axios from 'axios';
 import Loadscreen from '../../load/Loadscreen';
 import { API_BASE_URL } from '@/lib/api.config';
+import Image from 'next/image';
 
 export function StepTwo({ playlist, setStep,  }: { playlist: ResponseCreate[], setStep: (data:any) => void }) {
     const [isLoading, setIsLoading ] = useState(false);
@@ -68,9 +69,11 @@ export function StepTwo({ playlist, setStep,  }: { playlist: ResponseCreate[], s
            {Array.isArray(playlist) && playlist.map((item) => (
              <li key={item.uri} className="py-4 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
                {item.albumImage ? (
-                 <img 
+                 <Image 
                  src={item.albumImage} 
                  alt={item.name} 
+                 width={64}
+                 height={64}
                  className="h-16 w-16 object-cover rounded-sm mr-4" 
                  />
                ) : (

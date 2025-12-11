@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function StepThree() {
   const urlPlaylist = localStorage.getItem('playlistURL');
@@ -13,7 +14,9 @@ export function StepThree() {
       <h2>Your Playlist is Ready!</h2>
       {urlPlaylist && (
         <div>
-          <img src={imgPlaylist || ''} alt="Playlist cover" />
+          {imgPlaylist && (
+            <Image src={imgPlaylist} alt="Playlist cover" width={300} height={300} />
+          )}
           <a   href={urlPlaylist} target="_blank" rel="noopener noreferrer">
             Open Playlist on Spotify
           </a>
